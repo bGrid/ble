@@ -1,6 +1,7 @@
 package hci
 
 import (
+	"encoding/binary"
 	"encoding/hex"
 	"fmt"
 	"io"
@@ -351,7 +352,7 @@ func (h *HCI) send(c Command) ([]byte, error) {
 		err = fmt.Errorf("hci: no response to command, hci connection failed")
 		fmt.Println("no response to command")
 		fmt.Println("pending commands:")
-		fmt.Printf("cmd: %x pkt: %s\n", c.OpCode(), hex.EncodeToString(b[:4 + c.Len()]))
+		fmt.Printf("cmd: %x pkt: %s\n", c.OpCode(), hex.EncodeToString(b[:4+c.Len()]))
 		h.dispatchError(err)
 		ret = nil
 	case <-h.done:
@@ -717,11 +718,18 @@ func (h *HCI) handleLEConnectionComplete(b []byte) error {
 		fmt.Printf("[BLE] connection failed: %s\n", hex.EncodeToString(b))
 		return nil
 	}
-	c := newConn(h, e)
+
 	h.muConns.Lock()
 	pa := e.PeerAddress()
 	addr := pa[:]
 	logger.Debug("[BLE] connection complete for %04X: addr: %s, lecc evt: %s\n", e.ConnectionHandle(), hex.EncodeToString(addr), hex.EncodeToString(b))
+
+	bGridPasskey := 652638 + int(binary.LittleEndian.Uint16(addr[0:3]))
+	bGridSmpConfig := SmpConfig{
+		IoCapsKeyboardDisplay, byte(OobNotPresent), 0x09, 16, 0x00, 0x01, ble.AuthData{Passkey: bGridPasskey},
+	}
+
+	c := newConn(h, e, bGridSmpConfig)
 	h.conns[e.ConnectionHandle()] = c
 	h.muConns.Unlock()
 
