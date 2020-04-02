@@ -9,10 +9,10 @@ import (
 	"net"
 	"time"
 
+	"github.com/pkg/errors"
 	"github.com/rigado/ble"
 	"github.com/rigado/ble/linux/hci/cmd"
 	"github.com/rigado/ble/linux/hci/evt"
-	"github.com/pkg/errors"
 )
 
 // Conn ...
@@ -72,7 +72,7 @@ type Encrypter interface {
 	Encrypt() error
 }
 
-func newConn(h *HCI, param evt.LEConnectionComplete) *Conn {
+func newConn(h *HCI, param evt.LEConnectionComplete, smpc SmpConfig) *Conn {
 
 	c := &Conn{
 		hci:   h,
@@ -96,7 +96,7 @@ func newConn(h *HCI, param evt.LEConnectionComplete) *Conn {
 	}
 
 	if c.hci.smpEnabled {
-		c.smp = c.hci.smp.Create(defaultSmpConfig)
+		c.smp = c.hci.smp.Create(smpc)
 		c.initPairingContext()
 		c.smp.SetWritePDUFunc(c.writePDU)
 		c.smp.SetEncryptFunc(c.encrypt)
