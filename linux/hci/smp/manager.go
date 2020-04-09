@@ -102,7 +102,7 @@ func (m *manager) Handle(in []byte) error {
 func (m *manager) Pair(authData ble.AuthData, to time.Duration) error {
 
 	if m.t.pairing.state != Init {
-		return fmt.Errorf("Already pairing")
+		return fmt.Errorf("Pairing already in progress")
 	}
 
 	//todo: can this be made less bad??

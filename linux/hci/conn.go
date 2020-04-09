@@ -361,7 +361,7 @@ func (c *Conn) recombine() error {
 	}
 
 	p := pdu(pkt.data())
-
+	logger.Debug("recombine", "pdu in:", fmt.Sprintf("% X", pkt.data()))
 	// Currently, check for LE-U only. For channels that we don't recognizes,
 	// re-combine them anyway, and discard them later when we dispatch the PDU
 	// according to CID.
@@ -414,25 +414,13 @@ func (c *Conn) Close() error {
 		// Return if it's already closed.
 		return nil
 	default:
-		//if the disconnect times out (no response to the command or
-		//we never receive a DisconnectComplete), this go routine
-		//ensures the connection handle is cleaned up
-		go func(handle uint16, addr string) {
-			select {
-			case <-c.Disconnected():
-			case <-time.After(10 * time.Second):
-				fmt.Printf("disconnect for %04X:%s timed out...\n", handle, c.RemoteAddr().String())
-				err := c.hci.cleanupConnectionHandle(handle)
-				if err != nil {
-					fmt.Println(err)
-				}
-			}
-		}(c.param.ConnectionHandle(), c.RemoteAddr().String())
-
-		return c.hci.Send(&cmd.Disconnect{
+		err := c.hci.Send(&cmd.Disconnect{
 			ConnectionHandle: c.param.ConnectionHandle(),
 			Reason:           0x13,
 		}, nil)
+
+		_ = c.hci.cleanupConnectionHandle(c.param.ConnectionHandle())
+		return err
 	}
 }
 

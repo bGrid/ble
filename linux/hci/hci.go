@@ -159,6 +159,11 @@ func (h *HCI) Init() error {
 		return err
 	}
 
+	// check params
+	p := &h.params
+	if err = p.validate(); err != nil {
+		return err
+	}
 	h.setAllowedCommands(1)
 
 	go h.sktReadLoop()
@@ -170,9 +175,8 @@ func (h *HCI) Init() error {
 	// Pre-allocate buffers with additional head room for lower layer headers.
 	// HCI header (1 Byte) + ACL Data Header (4 bytes) + L2CAP PDU (or fragment)
 	h.pool = NewPool(1+4+h.bufSize, h.bufCnt-1)
-
-	h.Send(&h.params.advParams, nil)
-	h.Send(&h.params.scanParams, nil)
+	h.Send(&p.advParams, nil)
+	h.Send(&p.scanParams, nil)
 	return nil
 }
 
@@ -401,7 +405,7 @@ func (h *HCI) sktProcessLoop() {
 			// Some bluetooth devices may append vendor specific packets at the last,
 			// in this case, simply ignore them.
 			if strings.HasPrefix(err.Error(), "unsupported vendor packet:") {
-				_ = logger.Error("skt: %v", err)
+				_ = logger.Error("hci", "skt: ", err)
 			} else {
 				h.err = fmt.Errorf("skt handle error: %v", err)
 				return
@@ -485,7 +489,7 @@ func (h *HCI) handleACL(b []byte) error {
 	if c, ok := h.conns[handle]; ok {
 		c.chInPkt <- b
 	} else {
-		_ = logger.Warn("invalid connection handle on ACL packet", "handle", handle)
+		_ = logger.Warn("invalid connection handle on ACL packet", "handle:", handle)
 	}
 
 	return nil
@@ -722,7 +726,6 @@ func (h *HCI) handleLEConnectionComplete(b []byte) error {
 	h.muConns.Lock()
 	pa := e.PeerAddress()
 	addr := pa[:]
-	logger.Debug("[BLE] connection complete for %04X: addr: %s, lecc evt: %s\n", e.ConnectionHandle(), hex.EncodeToString(addr), hex.EncodeToString(b))
 
 	bGridPasskey := 652638 + int(binary.LittleEndian.Uint16(addr[0:3]))
 	bGridSmpConfig := SmpConfig{
@@ -730,6 +733,7 @@ func (h *HCI) handleLEConnectionComplete(b []byte) error {
 	}
 
 	c := newConn(h, e, bGridSmpConfig)
+	logger.Debug("[BLE] connection complete for %04X: addr: %s, lecc evt: %s\n", e.ConnectionHandle(), hex.EncodeToString(addr), hex.EncodeToString(b))
 	h.conns[e.ConnectionHandle()] = c
 	h.muConns.Unlock()
 
@@ -776,16 +780,17 @@ func (h *HCI) cleanupConnectionHandle(ch uint16) error {
 
 	h.muConns.Lock()
 	defer h.muConns.Unlock()
-	logger.Debug("[BLE] cleanupConnHan: looking for %04X\n", ch)
+	logger.Debug("hci", "cleanupConnHan: looking for", fmt.Sprintf("%04X", ch))
 	c, found := h.conns[ch]
 	if !found {
-		return fmt.Errorf("disconnecting an invalid handle %04X", ch)
+		return nil
+		//return fmt.Errorf("disconnecting an invalid handle %04X", ch)
 	}
 
-	logger.Debug("[BLE] clenupConnHan %04X: found device with address %s\n", ch, c.RemoteAddr().String())
+	logger.Debug("hci", "", fmt.Sprintf("clenupConnHan %04X: found device with address %s\n", ch, c.RemoteAddr().String()))
 
 	delete(h.conns, ch)
-	logger.Debug("[BLE] cleanupConnHan %04X: close c.chInPkt\n", ch)
+	logger.Debug("hci", "[BLE] cleanupConnHan close c.chInPkt", fmt.Sprintf("%04X", ch))
 	close(c.chInPkt)
 
 	if !h.isOpen() && c.param.Role() == roleSlave {
@@ -800,7 +805,7 @@ func (h *HCI) cleanupConnectionHandle(ch uint16) error {
 		h.params.RUnlock()
 	} else {
 		// remote peripheral disconnected
-		logger.Debug("[BLE] cleanupConnHan %04X: close c.chDone\n", ch)
+		logger.Debug("hci", "cleanupConnHan close c.chDone", fmt.Sprint("%04X", ch))
 		close(c.chDone)
 	}
 	// When a connection disconnects, all the sent packets and weren't acked yet
@@ -818,7 +823,7 @@ func (h *HCI) cleanupConnectionHandle(ch uint16) error {
 func (h *HCI) handleDisconnectionComplete(b []byte) error {
 	e := evt.DisconnectionComplete(b)
 	ch := e.ConnectionHandle()
-	logger.Debug("[BLE] disconnect complete for handle %04X\n", ch)
+	logger.Debug("hci", "[BLE] disconnect complete for handle", fmt.Sprintf("%04x", ch))
 	return h.cleanupConnectionHandle(ch)
 }
 
