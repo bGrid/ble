@@ -14,7 +14,7 @@ require (
 	github.com/raff/goble v0.0.0-20190909174656-72afc67d6a99
 	github.com/sirupsen/logrus v1.4.2
 	github.com/stretchr/testify v1.4.0 // indirect
-	github.com/urfave/cli v1.22.2
+	github.com/urfave/cli v1.22.4
 	github.com/wsddn/go-ecdh v0.0.0-20161211032359-48726bab9208
 	golang.org/x/crypto v0.0.0-20200115085410-6d4e4cb37c7d // indirect
 	golang.org/x/sys v0.0.0-20191126131656-8a8471f7e56d
