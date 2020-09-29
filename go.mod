@@ -12,7 +12,7 @@ require (
 	github.com/mgutz/logxi v0.0.0-20161027140823-aebf8a7d67ab
 	github.com/pkg/errors v0.9.1
 	github.com/raff/goble v0.0.0-20190909174656-72afc67d6a99
-	github.com/sirupsen/logrus v1.6.0
+	github.com/sirupsen/logrus v1.7.0
 	github.com/stretchr/testify v1.4.0 // indirect
 	github.com/urfave/cli v1.22.4
 	github.com/wsddn/go-ecdh v0.0.0-20161211032359-48726bab9208
