@@ -1,8 +1,9 @@
 package hci
 
 import (
-	"github.com/rigado/ble"
 	"time"
+
+	"github.com/rigado/ble"
 )
 
 type smpDispatcher struct {
@@ -45,10 +46,16 @@ type SmpManager interface {
 }
 
 type SmpConfig struct {
-	IoCap, OobFlag, AuthReq, MaxKeySize, InitKeyDist, RespKeyDist byte
+	IoCap          byte
+	OobFlag        byte
+	AuthReq        byte
+	MaxKeySize     byte
+	InitKeyDist    byte
+	RespKeyDist    byte
+	Authentication ble.AuthData
 }
 
 //todo: make these configurable
 var defaultSmpConfig = SmpConfig{
-	IoCapsKeyboardDisplay, byte(OobNotPresent), 0x09, 16, 0x00, 0x01,
+	IoCapsKeyboardDisplay, byte(OobNotPresent), 0x09, 16, 0x00, 0x01, ble.AuthData{},
 }

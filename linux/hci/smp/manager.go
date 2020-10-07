@@ -35,7 +35,7 @@ type manager struct {
 //todo: need to have on instance per connection which requires a mutex in the bond manager
 //todo: remove bond manager from input parameters?
 func NewSmpManager(config hci.SmpConfig, bm hci.BondManager) *manager {
-	p := &pairingContext{request: config, state: Init}
+	p := &pairingContext{request: config, state: Init, authData: config.Authentication}
 	m := &manager{config: config, pairing: p, bondManager: bm, result: make(chan error)}
 	t := NewSmpTransport(p, bm, m, nil, nil)
 	m.t = t
