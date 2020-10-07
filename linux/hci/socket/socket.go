@@ -106,7 +106,6 @@ func NewSocket(id int) (*Socket, error) {
 }
 
 func open(fd, id int) (*Socket, error) {
-
 	// HCI User Channel requires exclusive access to the device.
 	// The device has to be down at the time of binding.
 	if err := ioctl(uintptr(fd), hciDownDevice, uintptr(id)); err != nil {
@@ -114,6 +113,7 @@ func open(fd, id int) (*Socket, error) {
 	}
 
 	// Bind the RAW socket to HCI User Channel
+	// unix.Bind brings up the HCI device
 	sa := unix.SockaddrHCI{Dev: uint16(id), Channel: unix.HCI_CHANNEL_USER}
 	if err := unix.Bind(fd, &sa); err != nil {
 		return nil, errors.Wrap(err, "can't bind socket to hci user channel")
