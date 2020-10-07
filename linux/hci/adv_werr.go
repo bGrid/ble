@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/rigado/ble"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
 )
 
 func (a *Advertisement) localNameWErr() (string, error) {

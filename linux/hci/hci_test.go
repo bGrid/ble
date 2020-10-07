@@ -4,8 +4,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/rigado/ble"
-	"github.com/rigado/ble/linux/hci/evt"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci/evt"
 )
 
 var r interface{}

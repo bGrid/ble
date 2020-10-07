@@ -3,7 +3,7 @@ package hci
 import (
 	"time"
 
-	"github.com/rigado/ble"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
 )
 
 type smpDispatcher struct {

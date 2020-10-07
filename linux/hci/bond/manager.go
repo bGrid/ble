@@ -5,7 +5,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
-	"github.com/rigado/ble/linux/hci"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci"
 	"io/ioutil"
 	"os"
 	"sync"

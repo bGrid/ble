@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/pkg/errors"
-	"github.com/rigado/ble"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
 )
 
 // NotificationHandler handles notification or indication.

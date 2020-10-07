@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/rigado/ble"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
 	"github.com/pkg/errors"
 	"github.com/urfave/cli"
 )

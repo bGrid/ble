@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/rigado/ble"
-	"github.com/rigado/ble/linux"
-	"github.com/rigado/ble/linux/hci/cmd"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci/cmd"
 	"github.com/pkg/errors"
 )
 

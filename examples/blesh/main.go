@@ -10,10 +10,10 @@ import (
 	"syscall"
 
 	"github.com/pkg/errors"
-	"github.com/rigado/ble"
-	"github.com/rigado/ble/examples/lib"
-	"github.com/rigado/ble/examples/lib/dev"
-	"github.com/rigado/ble/linux"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/examples/lib"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/examples/lib/dev"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux"
 	"github.com/urfave/cli"
 )
 

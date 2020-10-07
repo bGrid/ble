@@ -4,7 +4,7 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"github.com/rigado/ble/sliceops"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/sliceops"
 )
 
 func smpF4(u, v, x []byte, z uint8) ([]byte, error) {

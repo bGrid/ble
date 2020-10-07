@@ -4,8 +4,8 @@ import (
 	"log"
 	"sync"
 
-	"github.com/rigado/ble"
-	"github.com/rigado/ble/linux/att"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/att"
 )
 
 // NewServerWithName creates a new Server with the specified name

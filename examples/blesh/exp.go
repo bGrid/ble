@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/rigado/ble"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
 )
 
 func explore(cln ble.Client, p *ble.Profile) error {

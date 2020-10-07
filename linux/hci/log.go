@@ -1,7 +1,7 @@
 package hci
 
 import (
-	"github.com/rigado/ble"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
 )
 
 var logger = ble.Logger

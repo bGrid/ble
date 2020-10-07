@@ -1,6 +1,6 @@
 package lib
 
-import "github.com/rigado/ble"
+import "dev.azure.com/bGridSolutions/Tools/ble.git"
 
 // Private 128-bit UUIDs, which avoids the base of pre-defined 16/32-bits UUIDS
 // xxxxxxxx-0000-1000-8000-00805F9B34FB [Vol 3, Part B, 2.5.1].

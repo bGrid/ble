@@ -4,7 +4,7 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 	"fmt"
-	"github.com/rigado/ble/linux/hci"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci"
 )
 
 //func smpOnPairingRequest(c *Conn, in pdu) ([]byte, error) {

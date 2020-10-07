@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/rigado/ble/linux/hci/cmd"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci/cmd"
 )
 
 const (

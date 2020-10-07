@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/rigado/ble"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
 )
 
 // NewEchoChar ...

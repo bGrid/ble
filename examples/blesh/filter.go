@@ -3,7 +3,7 @@ package main
 import (
 	"strings"
 
-	"github.com/rigado/ble"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
 	"github.com/urfave/cli"
 )
 

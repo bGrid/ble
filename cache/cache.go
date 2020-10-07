@@ -3,7 +3,7 @@ package cache
 import (
 	"fmt"
 	jsoniter "github.com/json-iterator/go"
-	"github.com/rigado/ble"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
 	"io/ioutil"
 	"os"
 	"sync"

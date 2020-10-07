@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/rigado/ble"
-	"github.com/rigado/ble/linux/adv"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/adv"
 )
 
 type testPdu struct {

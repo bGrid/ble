@@ -4,7 +4,7 @@ import (
 	"crypto/aes"
 	"encoding/binary"
 
-	"github.com/rigado/ble/sliceops"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/sliceops"
 
 	"github.com/enceve/crypto/cmac"
 )

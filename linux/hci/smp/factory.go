@@ -1,6 +1,6 @@
 package smp
 
-import "github.com/rigado/ble/linux/hci"
+import "dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci"
 
 type factory struct {
 	bm hci.BondManager

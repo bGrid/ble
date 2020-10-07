@@ -5,7 +5,7 @@ import (
 	"crypto/elliptic"
 	"crypto/rand"
 
-	"github.com/rigado/ble/sliceops"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/sliceops"
 	"github.com/wsddn/go-ecdh"
 )
 

@@ -9,8 +9,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/rigado/ble/linux/hci"
-	"github.com/rigado/ble/sliceops"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/sliceops"
 )
 
 func buildPairingReq(p hci.SmpConfig) []byte {

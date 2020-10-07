@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/rigado/ble"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
 )
 
 // NewCountChar ...

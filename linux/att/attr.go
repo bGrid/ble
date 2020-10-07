@@ -1,6 +1,6 @@
 package att
 
-import "github.com/rigado/ble"
+import "dev.azure.com/bGridSolutions/Tools/ble.git"
 
 // attr is a BLE attribute.
 type attr struct {

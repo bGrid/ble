@@ -8,8 +8,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/rigado/ble"
-	"github.com/rigado/ble/linux/att"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/att"
 )
 
 const (

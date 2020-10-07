@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/rigado/ble/cache"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/cache"
 
-	"github.com/rigado/ble/linux/hci/cmd"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci/cmd"
 )
 
 // SetDialerTimeout sets dialing timeout for Dialer.

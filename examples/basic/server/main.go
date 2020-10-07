@@ -7,9 +7,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/rigado/ble"
-	"github.com/rigado/ble/examples/lib"
-	"github.com/rigado/ble/examples/lib/dev"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/examples/lib"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/examples/lib/dev"
 	"github.com/pkg/errors"
 )
 

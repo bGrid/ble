@@ -1,6 +1,6 @@
 package lib
 
-import "github.com/rigado/ble"
+import "dev.azure.com/bGridSolutions/Tools/ble.git"
 
 // NewBatteryService ...
 func NewBatteryService() *ble.Service {

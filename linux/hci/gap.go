@@ -7,10 +7,10 @@ import (
 	"time"
 
 	"github.com/pkg/errors"
-	"github.com/rigado/ble"
-	"github.com/rigado/ble/linux/adv"
-	"github.com/rigado/ble/linux/gatt"
-	"github.com/rigado/ble/sliceops"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/adv"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/gatt"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/sliceops"
 )
 
 // Addr ...

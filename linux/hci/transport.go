@@ -5,8 +5,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/rigado/ble/linux/hci/h4"
-	"github.com/rigado/ble/linux/hci/socket"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci/h4"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci/socket"
 )
 
 type transportHci struct {

@@ -4,8 +4,8 @@ import (
 	"encoding/binary"
 
 	"github.com/pkg/errors"
-	"github.com/rigado/ble"
-	"github.com/rigado/ble/parser"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/parser"
 )
 
 var keys = struct {

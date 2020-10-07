@@ -1,8 +1,8 @@
 package dev
 
 import (
-	"github.com/rigado/ble"
-	"github.com/rigado/ble/linux"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux"
 )
 
 // DefaultDevice ...

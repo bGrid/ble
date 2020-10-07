@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"io"
 
-	smp2 "github.com/rigado/ble/linux/hci/smp"
+	smp2 "dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci/smp"
 
 	"github.com/pkg/errors"
-	"github.com/rigado/ble"
-	"github.com/rigado/ble/linux/att"
-	"github.com/rigado/ble/linux/gatt"
-	"github.com/rigado/ble/linux/hci"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/att"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/gatt"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci"
 )
 
 // NewDevice returns the default HCI device.

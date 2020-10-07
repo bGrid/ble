@@ -11,9 +11,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/rigado/ble"
-	"github.com/rigado/ble/linux"
-	bonds "github.com/rigado/ble/linux/hci/bond"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
+	"dev.azure.com/bGridSolutions/Tools/ble.git/linux"
+	bonds "dev.azure.com/bGridSolutions/Tools/ble.git/linux/hci/bond"
 )
 
 var (

@@ -1,7 +1,7 @@
 package dev
 
 import (
-	"github.com/rigado/ble"
+	"dev.azure.com/bGridSolutions/Tools/ble.git"
 )
 
 // NewDevice ...
