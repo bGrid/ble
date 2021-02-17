@@ -11,7 +11,7 @@ require (
 	github.com/mgutz/logxi v0.0.0-20161027140823-aebf8a7d67ab
 	github.com/pkg/errors v0.9.1
 	github.com/raff/goble v0.0.0-20200327175727-d63360dcfd80
-	github.com/sirupsen/logrus v1.7.0
+	github.com/sirupsen/logrus v1.7.1
 	github.com/urfave/cli v1.22.4
 	github.com/wsddn/go-ecdh v0.0.0-20161211032359-48726bab9208
 	golang.org/x/crypto v0.0.0-20201002170205-7f63de1d35b0 // indirect
